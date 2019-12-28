@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+* {
+  box-sizing: border-box;
+}
+
+.glyphicon-book::after {
+  content: "Bookers";
+  font-weight: bold;
+}
+
+.home_btn {
+  height: 3em;
+  line-height: 3em;
+  font-size: 1em;
+  color: #666;
+}
+
+.home_btn:hover {
+  color: white;
+}
