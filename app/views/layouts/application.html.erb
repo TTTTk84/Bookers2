@@ -17,10 +17,14 @@
             <p class="logo">Bookers</p>
           </div>
           <div class="nav navbar-nav navbar-right header-blocks">
-            <p class="header-block"><%= link_to "", "/", class: "glyphicon glyphicon-home home header-link" %></p>
-            <p class="header-block"><%= link_to "", home_about_path, class: "glyphicon glyphicon-link about header-link" %></p>
-            <p class="header-block"><%= link_to "", new_user_registration_path, class: "glyphicon glyphicon-edit sign_up header-link" %></p>
-            <p class="header-block"><%= link_to "", new_user_session_path, class: "glyphicon glyphicon-log-in sign_in header-link" %></p>
+            <% if user_signed_in? %>
+
+            <% else %>
+              <p class="header-block"><%= link_to "", "/", class: "glyphicon glyphicon-home home header-link" %></p>
+              <p class="header-block"><%= link_to "", home_about_path, class: "glyphicon glyphicon-link about header-link" %></p>
+              <p class="header-block"><%= link_to "", new_user_registration_path, class: "glyphicon glyphicon-edit sign_up header-link" %></p>
+              <p class="header-block"><%= link_to "", new_user_session_path, class: "glyphicon glyphicon-log-in sign_in header-link" %></p>
+            <% end %>
           </div>
         </div>
       </nav>
