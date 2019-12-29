@@ -20,6 +20,50 @@
   box-sizing: border-box;
 }
 
+.logo {
+  font-size: 1.5em;
+  color: white;
+}
+
+.header-link {
+  color: #9d9d9d;
+  text-decoration: none;
+}
+
+.header-link:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.home::after {
+  content: "Home";
+  padding-left: 1em;
+}
+
+.about::after {
+  content: "About";
+  padding-left: 1em;
+}
+
+.sign_up::after {
+  content: "sign up";
+  padding-left: 1em;
+}
+
+.sign_in::after {
+  content: "login";
+  padding-left: 1em;
+}
+
+.header-blocks {
+  padding-top: 1em;
+}
+
+.header-block {
+  display: inline-block;
+  padding: 0 1em;
+}
+
 .glyphicon-book::after {
   content: "Bookers";
   font-weight: bold;
