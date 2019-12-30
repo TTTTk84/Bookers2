@@ -18,9 +18,12 @@
           </div>
           <div class="nav navbar-nav navbar-right header-blocks">
             <% if user_signed_in? %>
-
+              <p class="header-block"><%= link_to "", user_path(current_user.id), class: "glyphicon glyphicon-home home header-link" %></p>
+              <p class="header-block"><%= link_to "", users_path, class: "glyphicon glyphicon-user users header-link" %></p>
+              <p class="header-block"><%= link_to "", books_path, class: "glyphicon glyphicon-book books header-link" %></p>
+              <p class="header-block"><%= link_to "", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout header-link" %></p>
             <% else %>
-              <p class="header-block"><%= link_to "", "/", class: "glyphicon glyphicon-home home header-link" %></p>
+              <p class="header-block"><%= link_to "", root_path, class: "glyphicon glyphicon-home home header-link" %></p>
               <p class="header-block"><%= link_to "", home_about_path, class: "glyphicon glyphicon-link about header-link" %></p>
               <p class="header-block"><%= link_to "", new_user_registration_path, class: "glyphicon glyphicon-edit sign_up header-link" %></p>
               <p class="header-block"><%= link_to "", new_user_session_path, class: "glyphicon glyphicon-log-in sign_in header-link" %></p>

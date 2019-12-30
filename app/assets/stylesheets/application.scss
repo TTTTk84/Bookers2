@@ -55,6 +55,21 @@
   padding-left: 1em;
 }
 
+.users::after {
+  content: "Users";
+  padding-left: 1em;
+}
+
+.books::after {
+  content: "Books";
+  padding-left: 1em;
+}
+
+.logout::after {
+  content: "logout";
+  padding-left: 1em;
+}
+
 .header-blocks {
   padding-top: 1em;
 }
