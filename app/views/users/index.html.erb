@@ -44,25 +44,22 @@
       </div>
     </div>
     <div class="col-xs-9">
-      <h2>Books</h2>
+      <h2>Users</h2>
         <table class="table">
           <tr>
-            <th></th>
-            <th>Title</th>
-            <th>Opinion</th>
+            <th>image</th>
+            <th>name</th>
           </tr>
-          <% @books.each do |book| %>
+          <% @users.each do |users| %>
             <tr class="row">
               <td>
-                <%= link_to book_path(book.id) do %>
                 <%= attachment_image_tag @user, :profile_image, fallback: 'no_img.jpg' %>
-                <% end %>
               </td>
               <td>
-                <%= book.title %>
+                <%= users.name %>
               </td>
               <td>
-                <%= book.body %>
+                <%= link_to "Show", user_path(users.id) %>
               </td>
             </tr>
           <% end %>
