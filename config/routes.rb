@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'home#home'
   get "home/about"
 
-  resources :users, only: [:index, :edit, :show, :destroy]
-  resources :books, only: [:index, :edit, :show, :destroy]
+  resources :users, only: [:index, :edit, :show, :new, :destroy]
+  resources :books, only: [:index, :edit, :show, :create, :destroy]
 
 end
