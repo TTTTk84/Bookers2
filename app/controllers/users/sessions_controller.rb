@@ -9,14 +9,19 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    user = User.find_by(email: params[:email])
+    if user && user.authenticate(params[:password])
+      flash[:notice] = "successfully"
+      redirect_to user_path(@user.id)
+    else
+      redirect_to new_user_session_path
+  end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def destroy
+    flash[:notice] = "logout"
+  end
 
   # protected
 

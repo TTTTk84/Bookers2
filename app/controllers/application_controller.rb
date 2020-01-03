@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!, except: [:home, :about]
   def after_sign_in_path_for(resource)
     user_path(resource.id) # ログイン後に遷移するpathを設定
   end
@@ -7,8 +8,9 @@ class ApplicationController < ActionController::Base
     root_path # ログアウト後に遷移するpathを設定
   end
 
-  before_action :configure_permitted_parameters, if: :devise_controller?
 
+
+  before_action :configure_permitted_parameters, if: :devise_controller?
   protected
 
   def configure_permitted_parameters

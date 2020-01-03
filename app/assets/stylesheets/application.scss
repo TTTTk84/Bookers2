@@ -35,38 +35,38 @@
   text-decoration: none;
 }
 
-.home::after {
-  content: "Home";
+.home::before {
+  content: "\e021";
   padding-left: 1em;
 }
 
-.about::after {
-  content: "About";
+.about::before {
+  content: "\e144";
   padding-left: 1em;
 }
 
-.sign_up::after {
-  content: "sign up";
+.sign_up::before {
+  content: "\e065";
   padding-left: 1em;
 }
 
-.sign_in::after {
-  content: "login";
+.sign_in::before {
+  content: "\e161";
   padding-left: 1em;
 }
 
-.users::after {
-  content: "Users";
+.users::before {
+  content: "\e008";
   padding-left: 1em;
 }
 
-.books::after {
-  content: "Books";
+.books::before {
+  content: "\e043";
   padding-left: 1em;
 }
 
-.logout::after {
-  content: "logout";
+.logout::before {
+  content: "\e163";
   padding-left: 1em;
 }
 
@@ -77,11 +77,6 @@
 .header-block {
   display: inline-block;
   padding: 0 1em;
-}
-
-.glyphicon-book::after {
-  content: "Bookers";
-  font-weight: bold;
 }
 
 .home_btn {

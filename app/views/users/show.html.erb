@@ -1,6 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-3">
+      <% if flash[:notice] %>
+      <%= flash[:notice] %>
+      <% end %>
       <h2>User info</h2>
       <%= attachment_image_tag @user, :profile_image, fallback: 'no_img.jpg' %>
       <table class="table">
@@ -13,9 +16,15 @@
           <td><%= @user.introduction %></td>
         </tr>
       </table>
-      <div class="row">
-        <%= link_to "", edit_user_path(@user.id) ,class: "btn btn-default btn-block glyphicon glyphicon-wrench" %>
-      </div>
+      <% if @user.id == current_user.id %>
+        <div class="row">
+          <%= link_to "", edit_user_path(@user.id) ,class: "btn btn-default btn-block glyphicon glyphicon-wrench" %>
+        </div>
+      <% else %>
+        <div class="row">
+          <%= link_to "", user_path(current_user.id) ,class: "btn btn-default btn-block glyphicon glyphicon-wrench" %>
+        </div>
+      <% end %>
       <div class="row">
         <%= form_for(@book, url: books_path) do |b| %>
           <h2 class="col-xs-offset-1">New book</h2>
@@ -44,10 +53,12 @@
           <% @books.each do |books| %>
             <tr class="row">
               <td class="col-md-4 text-left">
-                <%= attachment_image_tag User.find(books.user_id), :profile_image, fallback: 'no_img.jpg' %>
+                <%= link_to user_path(books.user_id) do %>
+                  <%= attachment_image_tag User.find(books.user_id), :profile_image, fallback: 'no_img.jpg' %>
+                <% end %>
               </td>
               <td class="col-md-4 text-left">
-                <%= books.title %>
+                <%= link_to books.title,book_path(books.id) %>
               </td>
               <td class="col-md-4 text-left">
                 <%= books.body %>
