@@ -1,5 +1,18 @@
 <div class="container">
   <div class="row">
+    <% if flash[:notice] %>
+    <%= flash[:notice] %>
+    <% end %>
+    <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @user.errors.count %>件のエラーが発生しました。</h2>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
     <h2>User info</h2>
     <%= form_for(@user) do |user| %>
       <div>
