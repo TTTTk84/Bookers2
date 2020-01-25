@@ -1,41 +1,4 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-3">
-      <% if flash[:notice] %>
-      <%= flash[:notice] %>
-      <% end %>
-      <h2>User info</h2>
-      <%= attachment_image_tag @user, :profile_image, fallback: 'no_img.jpg', class: "img-profile" %>
-      <table class="table">
-        <tr>
-          <th>name</th>
-          <td><%= @user.name %></td>
-        </tr>
-        <tr>
-          <th>introduction</th>
-          <td><%= @user.introduction %></td>
-        </tr>
-      </table>
-      <div class="row">
-        <%= link_to "", edit_user_path(@user.id) ,class: "btn btn-default btn-block glyphicon glyphicon-wrench" %>
-      </div>
-      <div class="row">
-        <%= form_for(@book, url: books_path) do |b| %>
-          <h2 class="col-xs-offset-1">New book</h2>
-          <div>
-            <label for="title">Title</label>
-            <%= b.text_field :title, class: "col-xs-12 field" %>
-          </div>
-          <div>
-            <label for="opinion">Opinion</label>
-            <%= b.text_area :body, class: "col-xs-12 field" %>
-          </div>
-          <div>
-            <%= b.submit "Create Book", class: "btn btn-primary col-xs-12 field" %>
-          </div>
-        <% end %>
-      </div>
-    </div>
+<%= render 'layouts/list', user: @user, book: @book %>
     <div class="col-xs-9">
       <h2>Book detail</h2>
         <table class="table">
@@ -66,5 +29,3 @@
             </tr>
         </table>
     </div>
-  </div>
-</div>
