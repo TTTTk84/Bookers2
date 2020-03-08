@@ -73,6 +73,8 @@ gem 'pry-byebug'
 
 gem 'dotenv-rails'
 
-group :production do
-  gem 'mysql2'
-end
+gem 'font-awesome-sass', '5.3.1'
+
+# group :production do
+#   gem 'mysql2'
+# end

@@ -17,6 +17,28 @@
               <td>
                 <%= @book_detail.body %>
               </td>
+                <% if @book_detail.favorited_by?(current_user) %>
+                  <td class="col-md-2">
+                    <%= link_to book_favorites_path(@book_detail), method: :delete do %>
+                      <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+                      <%= @book_detail.favorites.count %>
+                    <% end %>
+                  </td>
+                  <td class="col-md-2">
+                    コメント数: 0
+                  </td>
+                <% else %>
+                  <td class="col-md-2">
+                    <%= link_to book_favorites_path(@book_detail), method: :post do %>
+                      <i class="far fa-heart" aria-hidden="true" style="color: red;"></i>
+                      <%= @book_detail.favorites.count %>
+                    <% end %>
+                  </td>
+                  <td class="col-md-2">
+                    コメント数: 0
+                  </td>
+                <% end %>
+
               <% if @user.id == current_user.id %>
                 <td>
                   <%= link_to "Edit", edit_book_path(@book_detail.id), class: "btn btn-success" %>
