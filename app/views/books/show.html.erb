@@ -25,7 +25,7 @@
                     <% end %>
                   </td>
                   <td class="col-md-2">
-                    コメント数: 0
+                    コメント数: <%= @book_detail.book_comments.count %>
                   </td>
                 <% else %>
                   <td class="col-md-2">
@@ -35,7 +35,7 @@
                     <% end %>
                   </td>
                   <td class="col-md-2">
-                    コメント数: 0
+                    コメント数: <%= @book_detail.book_comments.count %>
                   </td>
                 <% end %>
 
@@ -50,4 +50,8 @@
               <% end %>
             </tr>
         </table>
+        <%= form_for(@comment, url: book_book_comments_path(@book_detail)) do |c| %>
+          <%= c.text_area :comment, class: "col-md-6"  %><br>
+          <%= c.submit "Create Comment" %>
+        <% end %>
     </div>

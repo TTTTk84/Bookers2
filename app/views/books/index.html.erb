@@ -32,7 +32,7 @@
               <% end %>
             </td>
             <td class="col-md-2">
-              コメント数: 0
+              コメント数: <%= book.book_comments.count %>
             </td>
           <% else %>
             <td class="col-md-2">
@@ -42,7 +42,7 @@
               <% end %>
             </td>
             <td class="col-md-2">
-              コメント数: 0
+              コメント数: <%= book.book_comments.count %>
             </td>
           <% end %>
         </tr>
