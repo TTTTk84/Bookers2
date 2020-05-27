@@ -1,6 +1,5 @@
 class BooksController < ApplicationController
   def index
-
     if User.find(current_user.id)
       @books = Book.all
       @user = User.find(current_user.id)
@@ -13,6 +12,7 @@ class BooksController < ApplicationController
     @user = User.find(@book_detail.user_id)
     @book = Book.new
     @comment = BookComment.new
+    @comments = BookComment.where(book_id: params[:id])
   end
 
   def edit
