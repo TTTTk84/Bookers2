@@ -1,0 +1,29 @@
+<div class="col-xs-12">
+  <h2>Follows</h2>
+    <table class="table table-hover table-inverse">
+      <tr class="row">
+        <th class="col-md-2 table-noborder"></th>
+        <th class="col-md-2 table-noborder">name</th>
+        <th class="col-md-2 table-noborder">フォロー数</th>
+        <th class="col-md-2 table-noborder">フォロワー数</th>
+        <th class="col-md-2 table-noborder"></th>
+        <th class="col-md-2 table-noborder"></th>
+      </tr>
+      <% @follows.each do |f| %>
+        <tr class="row">
+          <td class="col-md-2">
+          </td>
+          <td class="col-md-2">
+            <%= f.name %>
+          </td>
+          <td class="col-md-2">
+          </td>
+          <td class="col-md-2">
+          </td>
+          <td class="col-md-2">
+          </td>
+          <td class="col-md-2">
+          </td>
+      <% end %>
+    </table>
+</div>
