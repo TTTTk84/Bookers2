@@ -39,4 +39,5 @@ class User < ApplicationRecord
     self.following.include?(other_user)
   end
 
+
 end
