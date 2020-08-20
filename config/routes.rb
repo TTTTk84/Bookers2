@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'home#home'
   get "home/about"
-  post "search" => "search#render_search"
+  get "search" => "search#search"
 
   resources :users, only: [:index, :edit, :show, :update, :destroy] do
     resource :relationships, only: [:create, :destroy]

@@ -1,39 +1,34 @@
 class SearchController < ApplicationController
 
-  def return_model(model)
-    case model
-    when "User"
-      return User.all
-    when "Book"
-      return Book.all
-    end
+  def search
+    @model = params["model"]
+    @content = params["content"]
+    @method = params["method"]
+    @records = search_for(@model, @content, @method)
   end
 
-  def render_search
-    keyword = params[:keyword]
-    model = return_model(params[:model])
-    search_style = params[:search_style]
-    @user = User.find(current_user.id)
-    @book = Book.new
-
-    case search_style
-    when "all"
-      model = model.where("name  LIKE ?", "#{keyword}")
-    when "before"
-      model = model.where("name  LIKE ?", "#{keyword}%")
-    when "after"
-      model = model.where("name  LIKE ?", "%#{keyword}")
-    when "part"
-      model = model.where("name  LIKE ?", "%#{keyword}%")
-    end
-
-    if User == model.model
-      @users = model
-      render 'users/index'
-    elsif Book == model.model
-      @books = model
-      render 'books/index'
+  private
+  def search_for(model, content, method)
+    if model == 'User'
+      if method == 'perfect'
+        User.where(name: content)
+      elsif method == 'forward'
+        User.where('name LIKE ?', content+'%')
+      elsif method == 'backward'
+        User.where('name LIKE ?', '%'+content)
+      else
+        User.where('name LIKE ?', '%'+content+'%')
+      end
+    elsif model == 'Book'
+      if method == 'perfect'
+        Book.where(title: content)
+      elsif method == 'forward'
+        Book.where('title LIKE ?', content+'%')
+      elsif method == 'backward'
+        Book.where('title LIKE ?', '%'+content)
+      else
+        Book.where('title LIKE ?', '%'+content+'%')
+      end
     end
   end
-
 end
