@@ -17,27 +17,12 @@
               <td>
                 <%= @book_detail.body %>
               </td>
-                <% if @book_detail.favorited_by?(current_user) %>
-                  <td class="col-md-2">
-                    <%= link_to book_favorites_path(@book_detail), method: :delete do %>
-                      <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-                      <%= @book_detail.favorites.count %>
-                    <% end %>
-                  </td>
-                  <td class="col-md-2">
-                    コメント数: <%= @book_detail.book_comments.count %>
-                  </td>
-                <% else %>
-                  <td class="col-md-2">
-                    <%= link_to book_favorites_path(@book_detail), method: :post do %>
-                      <i class="far fa-heart" aria-hidden="true" style="color: red;"></i>
-                      <%= @book_detail.favorites.count %>
-                    <% end %>
-                  </td>
-                  <td class="col-md-2">
-                    コメント数: <%= @book_detail.book_comments.count %>
-                  </td>
-                <% end %>
+              <td class="col-md-2">
+                <%= render "favorites/favorite", book: @book_detail %>
+              </td>
+              <td class="col-md-2">
+                  コメント数: <%= @book_detail.book_comments.count %>
+              </td>
 
               <% if @user.id == current_user.id %>
                 <td>
@@ -51,21 +36,11 @@
             </tr>
         </table>
 
+        <div class="table comment_<%= @book_detail.id %>">
+            <%= render "book_comments/book_comment", comments: @comments %>
+        </div>
 
-        <table class="table">
-        <% @comments.each do |c| %>
-          <tr>
-            <td class="col-md-3">
-            <%= c.user.name %>
-            </td>
-            <td class="col-md-3">
-            <%= c.comment %>
-            </td>
-          </tr>
-        <% end %>
-        </table>
-
-        <%= form_with model: @comment, url: book_book_comments_path(@book_detail), local: true do |c| %>
+        <%= form_with model: @comment, url: book_book_comments_path(@book_detail) do |c| %>
           <%= c.text_area :comment, class: "col-md-6"  %><br>
           <%= c.submit "Create Comment" %>
         <% end %>

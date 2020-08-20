@@ -1,0 +1,15 @@
+<table class="table">
+  <% comments.each do |c| %>
+    <tr>
+      <td>
+      <%= c.user.name %>
+      </td>
+      <td>
+      <%= c.comment %>
+      </td>
+      <% if c.user == current_user %>
+        <td><%= link_to 'Destroy', book_book_comments_path(c), class: 'btn-sm btn-danger', method: :delete, remote: true %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
