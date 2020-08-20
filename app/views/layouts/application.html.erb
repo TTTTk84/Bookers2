@@ -9,11 +9,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <% if user_signed_in? %>
-    <%= render 'layouts/header_login' %>
-  <% else %>
-    <%= render 'layouts/header_logout' %>
-  <% end %>
+
+  <%= render 'layouts/header' %>
   <body>
     <div class="container">
       <div class="row">
